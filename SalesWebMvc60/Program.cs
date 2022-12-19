@@ -1,12 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SalesWebMvc60.Data;
+using SalesWebMvc60.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<SalesWebMvc60Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SalesWebMvc60Context") ?? throw new InvalidOperationException("Connection string 'SalesWebMvc60Context' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<SellerService>();
 
 var app = builder.Build();
 
@@ -16,6 +20,7 @@ using(var scope = app.Services.CreateScope())
 
     SeedingService.Seed(services);
 }
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
