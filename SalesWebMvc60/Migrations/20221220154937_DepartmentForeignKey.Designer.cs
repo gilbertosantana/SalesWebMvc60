@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalesWebMvc60.Data;
 
@@ -11,9 +12,11 @@ using SalesWebMvc60.Data;
 namespace SalesWebMvc60.Migrations
 {
     [DbContext(typeof(SalesWebMvc60Context))]
-    partial class SalesWebMvc60ContextModelSnapshot : ModelSnapshot
+    [Migration("20221220154937_DepartmentForeignKey")]
+    partial class DepartmentForeignKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
