@@ -70,7 +70,7 @@ namespace SalesWebMvc60.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch(IntegrityException e)
+            catch(IntegrityException)
             {
                 return RedirectToAction(nameof(Error), new { message = "Cant't delete because he/she has sales" });
             }
